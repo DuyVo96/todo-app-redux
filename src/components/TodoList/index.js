@@ -14,10 +14,12 @@ export default function TodoList() {
   const [todoName, setTodoName] = useState("");
   const [priority, setPriority] = useState("Medium");
 
-  const todoList = useSelector(todoListSelector);
-  const searchText = useSelector(searchTextSelector);
+  // const todoList = useSelector(todoListSelector);
+  // const searchText = useSelector(searchTextSelector);
 
-  // const todoList = useSelector(todosRemainingSelector);
+  const todoList = useSelector(todosRemainingSelector);
+
+  // console.log({ todoList, searchText });
 
   const dispatch = useDispatch();
   const handleAddButtonClick = () => {

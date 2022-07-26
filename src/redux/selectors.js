@@ -1,23 +1,25 @@
 import { createSelector } from "reselect";
 
 export const searchTextSelector = (state) => state.filters.search;
-// export const todoListSelector = (state) => state.todoList;
 
-export const todoListSelector = (state) => {
-  const todosRemaining = state.todoList.filter((todo) => {
-    return todo.name.includes(state.filters.search);
-  });
+export const todoListSelector = (state) => state.todoList;
 
-  return todosRemaining;
-};
+// export const todoListSelector = (state) => {
+//   const todosRemaining = state.todoList.filter((todo) => {
+//     return todo.name.includes(state.filters.search);
+//   });
 
-// reselect;
-// export const todosRemainingSelector = createSelector(
-//   searchTextSelector,
-//   todoListSelector,
-//   (todoList, searchText) => {
-//     return todoList.filter((todo) => {
-//       return todo.name.includes(searchText);
-//     });
-//   }
-// );
+//   return todosRemaining;
+// };
+
+// reselect
+
+export const todosRemainingSelector = createSelector(
+  todoListSelector,
+  searchTextSelector,
+  (todoList, searchText) => {
+    return todoList.filter((todo) => {
+      return todo.name.includes(searchText);
+    });
+  }
+);
