@@ -7,6 +7,8 @@ import {
   statusFilterChange,
 } from "../../redux/actions";
 
+import filterSlice from "./filtersSlice";
+
 const { Search } = Input;
 
 export default function Filters() {
@@ -18,17 +20,17 @@ export default function Filters() {
 
   const handleSearchTextChange = (e) => {
     setSearchText(e.target.value);
-    dispatch(searchFilterChange(e.target.value));
+    dispatch(filterSlice.actions.searchFilterChange(e.target.value));
   };
 
   const handleStatusChange = (e) => {
     setFilterStatus(e.target.value);
-    dispatch(statusFilterChange(e.target.value));
+    dispatch(filterSlice.actions.statusFilterChange(e.target.value));
   };
 
   const handlePriorityChange = (value) => {
     setFilterPriorities(value);
-    dispatch(priorityFilterChange(value));
+    dispatch(filterSlice.actions.prioritiesFilterChange(value));
   };
 
   return (
