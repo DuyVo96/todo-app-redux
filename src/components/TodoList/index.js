@@ -3,11 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { addTodo } from "../../redux/actions";
-import {
-  searchTextSelector,
-  todoListSelector,
-  todosRemainingSelector,
-} from "../../redux/selectors";
+import { todosRemainingSelector } from "../../redux/selectors";
 import Todo from "../Todo";
 
 export default function TodoList() {
@@ -47,7 +43,13 @@ export default function TodoList() {
     <Row style={{ height: "calc(100% - 40px)" }}>
       <Col span={24} style={{ height: "calc(100% - 40px)", overflowY: "auto" }}>
         {todoList.map((todo) => (
-          <Todo name={todo.name} key={todo.id} prioriry={todo.prioriry} />
+          <Todo
+            name={todo.name}
+            key={todo.id}
+            priority={todo.priority}
+            completed={todo.completed}
+            id={todo.id}
+          />
         ))}
       </Col>
       <Col span={24}>
